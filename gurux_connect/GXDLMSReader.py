@@ -132,9 +132,9 @@ class GXDLMSReader(GXDLMSDisconnectControl):
                         p.count = self.client.getFrameSize(rd)
                     while not self.media.receive(p):
                         pos += 1
-                        if pos == 3:
+                        if pos == 2:
                             raise TimeoutException("Failed to receive reply from the device in given time.")
-                        print("Data send failed.  Try to resend " + str(pos) + "/3")
+                        print("Data send failed.  Try to resend " + str(pos) + "/2")
                         self.media.send(data, None)
                     rd.set(p.reply)
                     p.reply = None
